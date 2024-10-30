@@ -12,11 +12,16 @@ window.RevealManim = {
         video_setup(slide, true);
       }
 
-      // Set up individual video elements
-      videos = slide.querySelectorAll(".fv-video");
 
-      for (var j = 0; j < videos.length; j++) {
-        video_setup(videos[j], false);
+      // Avoid duplication of video fragment by checking
+      // If a slide is a stack of vertical slides instead
+      if(slide.children.length > 0 && !slide.children[0].matches("section")) {
+	// Set up individual video elements
+	videos = slide.querySelectorAll(".fv-video");
+
+	for (var j = 0; j < videos.length; j++) {
+	  video_setup(videos[j], false);
+	}
       }
     }
 
